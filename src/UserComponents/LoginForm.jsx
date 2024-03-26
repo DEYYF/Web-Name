@@ -1,68 +1,59 @@
-import { getUsers } from '../helpers/getUsers';
-import './LoginForm.css'
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import { getUsers } from '../helpers/getUsers';
+import './LoginForm.css';
 
 export const LoginForm = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [user, setUser] = useState('');
+  const navigate = useNavigate();
 
-  const [username, setusername] = useState('');
-  const [Password, setPassword] = useState('');
-  const [User,setUser] = useState('');
-
-  const getusers = async() => {
+  const getUsersData = async () => {
     const newUser = await getUsers();
     setUser(newUser);
-    console.log(User);
-    ;
   }
 
-  
-
-  const ProceedLogin = (event) => {
-    event.preventDefault();
+  const proceedLogin = (event) => {
+    event.preventDefault(); 
     if (validate()) {
-      console.log('Auth')
+      console.log('Auth');
+      navigate('/items'); 
+    } else {
+      console.log('No auth');
     }
-  }
-
-  
+  };
 
   const validate = () => {
-    let result=true;
-    if (username !== User.Email || Password !== User.Password) {
-      result= false;
-  
-    }
-    return result;
+    return username === user.Email && password === user.Password;
   }
 
   useEffect(() => {
-    getusers();
-    console.log(User);
-  }, [ '']);
-
+    getUsersData();
+  }, []);
 
   return (
     <div className="row">
-        <form onSubmit={ProceedLogin} className="container">
-          <div className="card">
-            <div className="card-header">
-              <h2>User Login</h2>
+      <form onSubmit={proceedLogin} className="container">
+        <div className="card">
+          <div className="card-header">
+            <h2>User Login</h2>
+          </div>
+          <div className="card-body">
+            <div className="form-group">
+              <label>UserName <span className="errmsg">*</span></label>
+              <input value={username} onChange={e => setUsername(e.target.value)} className="form-control"/>
             </div>
-            <div className="card-body">
-              <div className="form-group">
-                <label>UserName <span className="errmsg">*</span></label>
-                <input value={username} onChange={e=>setusername(e.target.value)} className="form-control"/>
-              </div>
-              <div className="form-group">
-                <label>Password <span className="errmsg">*</span></label>
-                <input type='password' value={Password} onChange={e=>setPassword(e.target.value)} className="form-control"/>
-              </div>
-              <div className="card-footer">
-                <button type="submit" className="btn btn-primary" onClick={ProceedLogin}>Login</button>
-              </div>
+            <div className="form-group">
+              <label>Password <span className="errmsg">*</span></label>
+              <input type='password' value={password} onChange={e => setPassword(e.target.value)} className="form-control"/>
+            </div>
+            <div className="card-footer">
+              <button type="submit" className="btn btn-primary" onClick={proceedLogin}>Login</button>
             </div>
           </div>
-        </form>
+        </div>
+      </form>
     </div>
-  )
+  );
 }
