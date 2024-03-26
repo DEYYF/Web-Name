@@ -1,11 +1,10 @@
 import { useState } from "react";
-import '../styles.css';
-import { ModalsEdits } from "./Components/ModalsEdit";
+import '../../styles.css';
+import { ModalsEdits } from "../Components/ModalsEdit";
 
 export const Item = ({item, deleteitem, editItem}) => {
     const [openModal, setOpenModal] = useState(false);
     
-
     return (
         <div className="card">
             <img src={item.image} alt={item.name}/>

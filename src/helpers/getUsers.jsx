@@ -1,15 +1,16 @@
 export const getUsers = async () => {
-    const url = `https://proyecto-unai.free.beeceptor.com/users`
+    const url = `https://fakestoreapi.com/users/1`
     const resp = await fetch ( url );
-    const { data } = await resp.json();
+    const { email, password } = await resp.json();
 
-    const users = data.map(user => ({
-        id: user.id,
-        email: user.email,
-        password: user.password
-    }));
+    const user = {
+        Email: email,
+        Password: password
+    }
 
-    return users;
+    
+
+    return user;
 
     
 

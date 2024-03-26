@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
 import { Item } from "./Item";
-import { getItem } from "./helpers/getItem";
-import "../styles.css"
-import { Modals } from "./Components/Modals";
-
+import { getItem } from "../helpers/getItem";
+import { Modals } from "../Components/Modals";
+import "../../styles.css"
 
 
 export const ItemGrid = () => {
