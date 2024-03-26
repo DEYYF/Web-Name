@@ -7,6 +7,8 @@ export const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState('');
+
+
   const navigate = useNavigate();
 
   const getUsersData = async () => {
@@ -16,10 +18,13 @@ export const LoginForm = () => {
 
   const proceedLogin = (event) => {
     event.preventDefault(); 
+
     if (validate()) {
-      console.log('Auth');
+
       navigate('/items'); 
+
     } else {
+      
       console.log('No auth');
     }
   };
@@ -41,7 +46,7 @@ export const LoginForm = () => {
           </div>
           <div className="card-body">
             <div className="form-group">
-              <label>UserName <span className="errmsg">*</span></label>
+              <label>Email <span className="errmsg">*</span></label>
               <input value={username} onChange={e => setUsername(e.target.value)} className="form-control"/>
             </div>
             <div className="form-group">
