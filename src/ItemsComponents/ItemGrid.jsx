@@ -11,9 +11,13 @@ export const ItemGrid = () => {
 
     const [items, setItem] = useState(['']);
 
+    const [copyitems, setCopyItem] = useState(['']);
+
+
     const getitem = async() => {
         const newItem = await getItem();
         setItem(newItem);
+        setCopyItem(newItem);
     }
 
     const deleteItem = (itemToDelete) => {
@@ -40,16 +44,40 @@ export const ItemGrid = () => {
         setItem(updatedItems);
     }
 
+    const Buscador_nada = () => {
+        return(
+        <>
+            <h1>Nada encontrado</h1>
+        </>
+        )
+    }
+
+    const Buscador = (event) => {
+        
+        const search = event.target.value;
+
+        const buscandoItem = search === '' ? copyitems : items.filter(item => item.name.includes(search));
+        
+        setItem(buscandoItem)
+    }
+
     
 
     useEffect(() => {
       getitem();
+      
     }, []);
 
 
     return (
         <>
             <div className="card-grid">
+
+                <input 
+                type="text" 
+                className="Searcher"
+                label={'Search'}
+                onChange={Buscador}/>
 
                 {
                     items.map( (item) =>(

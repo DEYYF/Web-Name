@@ -143,3 +143,12 @@ h3 {
   font-size: 18px;
   font-weight: bold;
 }
+
+.Searcher {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc; /* Adjust border color */
+  border-radius: 4px;
+  font-size: 1rem; /* Adjust font size */
+  margin-bottom: 20px;
+}
