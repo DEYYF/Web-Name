@@ -33,10 +33,14 @@ h3 {
 
 .card-grid {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.card-grid .fb-more {
+  margin-top: 20px; /* Espacio entre el botón y el resto del contenido */
 }
 
 .card {
@@ -76,11 +80,35 @@ h3 {
 }
 
 .fb-more {
-  border-radius: 100px;
-  width: 80px;
-  height: 80px;
-  background-color: white;
+  margin-left: 100px;
+  background-color: #3b5998; /* Color de fondo regular */
+  color: #ffffff; /* Color de texto regular */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s, transform 0.3s; /* Transición de color de fondo y transformación */
 }
+
+/* Estilo al pasar el ratón */
+.fb-more:hover {
+  background-color: red; /* Nuevo color de fondo */
+  transform: scale(1.05); /* Aumentar el tamaño */
+}
+
+.fb-edit {
+  margin-left: 100px;
+  background-color: #3b5998; /* Color de fondo regular */
+  color: #ffffff; /* Color de texto regular */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s, transform 0.3s; /* Transición de color de fondo y transformación */
+}
+
+/* Estilo al pasar el ratón */
+.fb-edit:hover {
+  background-color: red; /* Nuevo color de fondo */
+  transform: scale(1.05); /* Aumentar el tamaño */
+}
+
 .main-container {
   position: fixed;
   top: 0;
@@ -145,28 +173,49 @@ h3 {
 }
 
 .Searcher {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc; /* Adjust border color */
-  border-radius: 4px;
-  font-size: 1rem; /* Adjust font size */
-  margin-bottom: 20px;
+  /* Adjust styles for input appearance */
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .GoBack {
-  /* Button styling */
+  /* Adjust styles for button appearance */
   position: absolute;
-  top: 0; /* Pegado al borde superior */
-  right: 0; /* Pegado al borde derecho */
-  background-color: #cccccc;  /* Light gray background */
-  color: #333333;            /* Dark gray text */
-  border: none;               /* Remove default border */
-  padding: 10px 20px;         /* Add some padding */
-  font-size: 16px;             /* Set font size */
-  cursor: pointer;            /* Indicate clickable button */
+  top: 1rem;
+  right: 1rem;
+  background-color: #f0f0f0;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+          /* Indicate clickable button */
 
   /* Optional: Add some hover effects */
   &:hover {
     background-color: #dddddd; /* Slightly darker background on hover */
   }
+}
+
+/* DataTable styles (adjust as needed) */
+.p-datatable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.p-datatable .p-datatable-header {
+  background-color: #f0f0f0;
+}
+
+.p-datatable th,
+.p-datatable td {
+  padding: 1rem;
+  text-align: left;
+}
+
+/* Image column styles (adjust as needed) */
+.p-datatable .w-6rem {
+  height: 6rem;
+  object-fit: cover; /* Ensure images fit within container */
 }
