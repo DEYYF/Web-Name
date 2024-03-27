@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export const Modals = ({openModal, setOpenModal, addItem, ultimoId}) => {
+export const Modals = ({ setOpenModal, addItem, ultimoId}) => {
 
     const [input, setInput] = useState("");
 

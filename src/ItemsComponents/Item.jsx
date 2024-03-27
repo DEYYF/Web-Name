@@ -12,7 +12,7 @@ export const Item = ({item, deleteitem, editItem}) => {
             <p>Especie: {item.species}</p>
             <button className="open-modal-button" onClick={() => deleteitem(item)}>Eliminar</button>
             <button className="open-modal-button" onClick={() => setOpenModal(true)}>Editar</button>
-            {openModal && <ModalsEdits openModal={openModal} setOpenModal={setOpenModal} updateItem={editItem} item={item}/>}
+            {openModal && <ModalsEdits setOpenModal={setOpenModal} updateItem={editItem} item={item}/>}
         </div>
     )
 }
