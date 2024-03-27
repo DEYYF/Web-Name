@@ -54,9 +54,9 @@ export const ItemGrid = () => {
 
     const Buscador = (event) => {
         
-        const search = event.target.value;
+        const search = event.target.value.toLowerCase();
 
-        const buscandoItem = search === '' ? copyitems : items.filter(item => item.name.includes(search));
+        const buscandoItem = search === '' ? copyitems : items.filter(item => item.name.toLowerCase().includes(search));
         
         setItem(buscandoItem)
     }
