@@ -3,6 +3,7 @@ import { Item } from "./Item";
 import { getItem } from "../helpers/getItem";
 import { Modals } from "../Components/Modals";
 import "../../styles.css"
+import { useNavigate } from "react-router-dom";
 
 
 export const ItemGrid = () => {
@@ -12,6 +13,9 @@ export const ItemGrid = () => {
     const [items, setItem] = useState(['']);
 
     const [copyitems, setCopyItem] = useState(['']);
+
+    const navigate = useNavigate();
+
 
 
     const getitem = async() => {
@@ -44,12 +48,10 @@ export const ItemGrid = () => {
         setItem(updatedItems);
     }
 
-    const Buscador_nada = () => {
-        return(
-        <>
-            <h1>Nada encontrado</h1>
-        </>
-        )
+    const goBack = (event) => {
+        event.preventDefault(); 
+
+        navigate('/'); 
     }
 
     const Buscador = (event) => {
@@ -72,6 +74,8 @@ export const ItemGrid = () => {
     return (
         <>
             <div className="card-grid">
+
+                <button className="GoBack" onClick={goBack}>Exit</button>
 
                 <input 
                 type="text" 
