@@ -76,7 +76,7 @@ export const ItemGrid = () => {
                 <input 
                 type="text" 
                 className="Searcher"
-                label={'Search'}
+                placeholder="Search"
                 onChange={Buscador}/>
 
                 {
