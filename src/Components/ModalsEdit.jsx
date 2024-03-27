@@ -2,7 +2,7 @@ import { useState } from "react";
 
 
 
-export const ModalsEdits = ({openModal, setOpenModal, updateItem, item}) => {
+export const ModalsEdits = ({setOpenModal, updateItem, item}) => {
 
     const [input, setInput] = useState("");
 
@@ -42,7 +42,7 @@ export const ModalsEdits = ({openModal, setOpenModal, updateItem, item}) => {
         {!nameSend && 
             <div className="main-container">
                 <div className="modal-container">
-                    <h3 className="">Crear</h3>
+                    <h3 className="">Edit</h3>
                     <label className="modal--imput-text">Nombre</label>
                         <input
                             placeholder={item.name}

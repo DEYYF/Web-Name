@@ -1,6 +1,6 @@
 export const getUsers = async () => {
-    const url = `https://fakestoreapi.com/users/1`
-    const resp = await fetch ( url );
+    
+    const resp = await fetch (`https://fakestoreapi.com/users/1`);
     const { email, password } = await resp.json();
 
     const user = {

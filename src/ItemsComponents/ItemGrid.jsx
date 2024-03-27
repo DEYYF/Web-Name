@@ -44,7 +44,7 @@ export const ItemGrid = () => {
 
     useEffect(() => {
       getitem();
-    }, [ '']);
+    }, []);
 
 
     return (
@@ -58,7 +58,6 @@ export const ItemGrid = () => {
                         deleteitem={deleteItem} 
                         item={item}
                         editItem={EditItem}
-                        id={item.id}
                         />
                     ))
                 }
@@ -69,7 +68,7 @@ export const ItemGrid = () => {
             <button className="fb-more" onClick={()=>{
         setOpenModal(true);
       }}>Crear</button>
-      {openModal && <Modals openModal={openModal} setOpenModal={setOpenModal} addItem={AddItem} ultimoId={items.length}/>}
+      {openModal && <Modals setOpenModal={setOpenModal} addItem={AddItem} ultimoId={items.length}/>}
         </>
     )
     

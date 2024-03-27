@@ -1,7 +1,6 @@
 export const getItem = async() => {
 
-    const url = `https://rickandmortyapi.com/api/character`;
-    const resp = await fetch( url );
+    const resp = await fetch(`https://rickandmortyapi.com/api/character`);
     const { results } = await resp.json();
 
     const Items = results.map (item => ({
