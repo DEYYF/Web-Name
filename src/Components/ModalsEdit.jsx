@@ -2,7 +2,7 @@ import { useState } from "react";
 
 
 
-export const ModalsEdits = ({setOpenModal, updateItem, item, setSelected}) => {
+export const ModalsEdits = ({setOpenModal, updateItem, item, setSelected, rowSelected}) => {
 
     const [input, setInput] = useState("");
 
@@ -34,6 +34,8 @@ export const ModalsEdits = ({setOpenModal, updateItem, item, setSelected}) => {
         setNameSend(true);
         
         setOpenModal(false);
+
+        rowSelected.originalEvent.target.style.background = 'White';
         
         
     }
@@ -69,7 +71,7 @@ export const ModalsEdits = ({setOpenModal, updateItem, item, setSelected}) => {
                     <div>
                     <div>
                         <button className="modal-footer-button modal-button-send" onClick={sendItem}>Send</button>
-                        <button className="modal-footer-button modal-button-cancel" onClick={() => setOpenModal(false)}>Cancel</button>
+                        <button className="modal-footer-button modal-button-cancel" onClick={() => {setOpenModal(false); rowSelected.originalEvent.target.style.background = 'White';}}>Cancel</button>
                     </div>
 
                     </div>

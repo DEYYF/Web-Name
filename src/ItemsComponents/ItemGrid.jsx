@@ -158,7 +158,7 @@ export const ItemGrid = () => {
                     {openModal && <Modals setOpenModal={setOpenModal} addItem={AddItem} ultimoId={items.length}/>}
 
                     <button className="fb-edit" onClick={()=>{setOpenModal2(true);}}>Editar</button>
-                    {openModal2 && selectedItem != null  && <ModalsEdits setOpenModal={setOpenModal2} item={selectedItem} updateItem={EditItem} setSelected={setSelectedItem} updateImage={imageBody}/>}
+                    {openModal2 && selectedItem != null  && <ModalsEdits setOpenModal={setOpenModal2} item={selectedItem} updateItem={EditItem} setSelected={setSelectedItem} rowSelected={RowSelected}/>}
                     
 
                 
