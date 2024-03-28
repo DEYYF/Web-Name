@@ -121,14 +121,6 @@ export const ItemGrid = () => {
 
     }
 
-    const changeColorDesSelect = (event) => {
-
-
-            event.originalEvent.target.style.background = 'White';
-            console.log(event.originalEvent.target);
-
-
-    }
 
     
 
