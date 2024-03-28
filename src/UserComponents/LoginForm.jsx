@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { getUsers } from '../helpers/getUsers';
 import './LoginForm.css';
+import { Button, Form, Input } from 'antd';
 
 export const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -38,27 +39,20 @@ export const LoginForm = () => {
   }, []);
 
   return (
-    <div className="row">
-      <form onSubmit={proceedLogin} className="container">
-        <div className="card">
-          <div className="card-header">
-            <h2>User Login</h2>
-          </div>
-          <div className="card-body">
-            <div className="form-group">
-              <label>Email <span className="errmsg">*</span></label>
-              <input value={username} onChange={e => setUsername(e.target.value)} className="form-control"/>
-            </div>
-            <div className="form-group">
-              <label>Password <span className="errmsg">*</span></label>
-              <input type='password' value={password} onChange={e => setPassword(e.target.value)} className="form-control"/>
-            </div>
-            <div className="card-footer">
-              <button type="submit" className="btn btn-primary" onClick={proceedLogin}>Login</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
+      <>
+        <Form>
+          <Form.Item label= 'Username' name='username'>
+            <Input type="text" placeholder='Username' onChange={(event) => setUsername(event.target.value)} ></Input>
+          </Form.Item>
+
+          <Form.Item label= 'Password' name='Password'>
+            <Input type="password" placeholder='Password' onChange={(event) => setPassword(event.target.value)} ></Input>
+          </Form.Item>
+
+          <Form.Item>
+            <Button type='primary' onClick={proceedLogin}>Login</Button>
+          </Form.Item>
+        </Form>
+      </>
   );
 }

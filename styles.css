@@ -1,6 +1,5 @@
 * {
   font-family: Helvetica, Arial, sans-serif;
-  background-color: white;
 }
 
 body {
@@ -18,9 +17,7 @@ input {
   width: 100%;
 }
 
-h1 {
-  margin: 10px;
-}
+
 
 h2 {
   font-size: 1.5rem;
@@ -36,7 +33,8 @@ h3 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .card-grid .fb-more {
@@ -46,7 +44,6 @@ h3 {
 .card {
   align-content:end;
   align-items: center;
-  background-color: white;
   border-radius: 10px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.03);
   display: flex;
@@ -55,7 +52,6 @@ h3 {
   justify-content: center;
   margin-bottom: 20px;
   margin-right: 20px;
-  overflow: hidden;
 }
 
 .card p {
@@ -72,34 +68,14 @@ h3 {
   
 }
 
-.card button {
-  background-color:rgb(241, 232, 232);
-  display: flex;
-  border-radius: 10px;
-  margin-right: 10px;
-}
-
-.fb-more {
-  background-color: #52c41a;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  outline: none;
-}
 
 
 
-.fb-edit {
-  background-color: #1890ff;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  outline: none;
-}
+
+
+
+
+
 
 
 .bt-eliminar {
@@ -110,73 +86,30 @@ h3 {
   cursor: pointer;
   border-radius: 4px;
   outline: none;
-}
-
-/* Estilo para el contenedor principal */
-.main-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Estilo para el contenedor del modal */
-.modal-container {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-}
-
-/* Estilo para los inputs del modal */
-.modal-input {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-/* Estilo para los botones del modal */
-.modal-footer {
-  display: flex;
-  justify-content: center;
-}
-
-/* Estilo para el botón de enviar */
-.modal-button-send,
-.modal-button-cancel {
-  padding: 0.5rem 1rem;
-  margin: 0.5rem;
-  border: none;
-  border-radius: 3px;
   cursor: pointer;
 }
 
-/* Estilo para el botón de enviar */
-.modal-button-send {
-  background-color: #007bff; /* Azul */
+.bt-eliminar:hover {
+  background-color: #ff7875;
+}
+
+.bt-recuperar {
+  background-color: #ff4d4f;
   color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
 }
 
-/* Estilo para el botón de cancelar */
-.modal-button-cancel {
-  background-color: #dc3545; /* Rojo */
-  color: white;
+.bt-recuperar:hover {
+  background-color: #ff7875;
 }
 
 
-.Searcher {
-  /* Adjust styles for input appearance */
-  border: 1px solid #ccc;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
+
 
 .GoBack {
   position: absolute;
@@ -184,10 +117,7 @@ h3 {
   right: 1rem;
   background-color: #fadb14;
   color: black;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 4px;
+  
 }
 
 /* DataTable styles (adjust as needed) */
@@ -210,4 +140,21 @@ h3 {
 .p-datatable .w-6rem {
   height: 6rem;
   object-fit: cover; /* Ensure images fit within container */
+}
+
+.DataTableContainer {
+  position: relative;
+  z-index: 1; /* Asegura que la DataTable esté por debajo de los modales */
+}
+
+.ModalsContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Asegura que el modal esté por encima de la DataTable */
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
