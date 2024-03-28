@@ -88,12 +88,6 @@ export const ItemGrid = () => {
 
 
 
-    const header = (
-        <div className="flex flex-wrap align-items-center justify-content-between gap-2">
-            <span className="text-xl text-900 font-bold">Items</span>
-            
-        </div>
-    );
 
     const imageBody = (item) => {
         return <img src={item.image} alt={item.image} className="w-6rem shadow-2 border-round"/>;
@@ -102,6 +96,8 @@ export const ItemGrid = () => {
     const buttonDeleteBody = (item) => {
         return <button className="bt-eliminar" onClick={() =>deleteItem(item)}>Eliminar</button>
     }
+
+    
 
    
 
@@ -114,25 +110,28 @@ export const ItemGrid = () => {
 
                 <button className="GoBack" onClick={goBack}>Exit</button>
 
-                <input 
-                type="text" 
-                className="Searcher"
-                placeholder="Search"
-                onChange={Buscador}/>
+                
+                    <input 
+                    type="text" 
+                    className="Searcher"
+                    placeholder="Search"
+                    onChange={Buscador}/>
 
-                <DataTable value={items} selectionMode="single" onSelectionChange={(e) =>{setSelectedItem(e.value);}  } header={header} tableStyle={{minWidth: '50rem'}}>
+                    <DataTable value={items} selectionMode="single"  selection= {selectedItem} onSelectionChange={(e) =>{setSelectedItem(e.value); setOpenModal2(false);}} tableStyle={{minWidth: '50rem'}} rowClassName={(rowData) => rowData === selectedItem ? 'selected-row' : ''}>
+                        
+                        <Column field="name" header="Name"></Column>
+                        <Column header="Image" body={imageBody}></Column>
+                        <Column field="species" header="Species"></Column>
+                        <Column header= "Eliminar" body={buttonDeleteBody}></Column>
+                    </DataTable>
+
+                    <button className="fb-more" onClick={()=>{setOpenModal(true);}}>Crear</button>
+                    {openModal && <Modals setOpenModal={setOpenModal} addItem={AddItem} ultimoId={items.length}/>}
+
+                    <button className="fb-edit" onClick={()=>{setOpenModal2(true);}}>Editar</button>
+                    {openModal2 && selectedItem != null  && <ModalsEdits setOpenModal={setOpenModal2} item={selectedItem} updateItem={EditItem} setSelected={setSelectedItem}/>}
                     
-                    <Column field="name" header="Name"></Column>
-                    <Column header="Image" body={imageBody}></Column>
-                    <Column field="species" header="Species"></Column>
-                    <Column header= "Eliminar" body={buttonDeleteBody}></Column>
-                </DataTable>
 
-                <button className="fb-more" onClick={()=>{setOpenModal(true);}}>Crear</button>
-                {openModal && <Modals setOpenModal={setOpenModal} addItem={AddItem} ultimoId={items.length}/>}
-
-                <button className="fb-edit" onClick={()=>{setOpenModal(true);}}>Editar</button>
-                {openModal && selectedItem != null && <ModalsEdits setOpenModal={setOpenModal} item={selectedItem} updateItem={EditItem}/>}
                 
 
             </div>

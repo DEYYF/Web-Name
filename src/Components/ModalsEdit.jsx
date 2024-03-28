@@ -2,7 +2,7 @@ import { useState } from "react";
 
 
 
-export const ModalsEdits = ({setOpenModal, updateItem, item}) => {
+export const ModalsEdits = ({setOpenModal, updateItem, item, setSelected}) => {
 
     const [input, setInput] = useState("");
 
@@ -19,6 +19,8 @@ export const ModalsEdits = ({setOpenModal, updateItem, item}) => {
             image: item.image
         };
         updateItem(updatedItem);
+        setSelected(null)
+        
     }
     
 

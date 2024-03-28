@@ -80,33 +80,36 @@ h3 {
 }
 
 .fb-more {
-  margin-left: 100px;
-  background-color: #3b5998; /* Color de fondo regular */
-  color: #ffffff; /* Color de texto regular */
-  padding: 10px 20px; /* Espaciado interno */
-  border-radius: 5px; /* Bordes redondeados */
-  transition: background-color 0.3s, transform 0.3s; /* Transición de color de fondo y transformación */
+  background-color: #52c41a;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
 }
 
-/* Estilo al pasar el ratón */
-.fb-more:hover {
-  background-color: red; /* Nuevo color de fondo */
-  transform: scale(1.05); /* Aumentar el tamaño */
-}
+
 
 .fb-edit {
-  margin-left: 100px;
-  background-color: #3b5998; /* Color de fondo regular */
-  color: #ffffff; /* Color de texto regular */
-  padding: 10px 20px; /* Espaciado interno */
-  border-radius: 5px; /* Bordes redondeados */
-  transition: background-color 0.3s, transform 0.3s; /* Transición de color de fondo y transformación */
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
 }
 
-/* Estilo al pasar el ratón */
-.fb-edit:hover {
-  background-color: red; /* Nuevo color de fondo */
-  transform: scale(1.05); /* Aumentar el tamaño */
+
+.bt-eliminar {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
 }
 
 .main-container {
@@ -180,22 +183,15 @@ h3 {
 }
 
 .GoBack {
-  /* Adjust styles for button appearance */
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background-color: #f0f0f0;
+  background-color: #fadb14;
+  color: black;
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 5px;
-  font-weight: bold;
-  margin-bottom: 1rem;
-          /* Indicate clickable button */
-
-  /* Optional: Add some hover effects */
-  &:hover {
-    background-color: #dddddd; /* Slightly darker background on hover */
-  }
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 /* DataTable styles (adjust as needed) */
