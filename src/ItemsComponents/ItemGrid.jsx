@@ -90,6 +90,7 @@ export const ItemGrid = () => {
 
 
     const imageBody = (item) => {
+        console.log(item.image)
         return <img src={item.image} alt={item.image} className="w-6rem shadow-2 border-round"/>;
     }
 
@@ -129,7 +130,7 @@ export const ItemGrid = () => {
                     {openModal && <Modals setOpenModal={setOpenModal} addItem={AddItem} ultimoId={items.length}/>}
 
                     <button className="fb-edit" onClick={()=>{setOpenModal2(true);}}>Editar</button>
-                    {openModal2 && selectedItem != null  && <ModalsEdits setOpenModal={setOpenModal2} item={selectedItem} updateItem={EditItem} setSelected={setSelectedItem}/>}
+                    {openModal2 && selectedItem != null  && <ModalsEdits setOpenModal={setOpenModal2} item={selectedItem} updateItem={EditItem} setSelected={setSelectedItem} updateImage={imageBody}/>}
                     
 
                 

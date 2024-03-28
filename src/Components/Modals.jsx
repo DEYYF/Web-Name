@@ -7,6 +7,8 @@ export const Modals = ({ setOpenModal, addItem, ultimoId}) => {
 
     const [inputEspecie, setinputEspecie] = useState("")
 
+    const [inputImage, setinputImage] = useState("")
+
     const [nameSend, setNameSend] = useState(false);
 
     const AddItem = () => {
@@ -14,7 +16,7 @@ export const Modals = ({ setOpenModal, addItem, ultimoId}) => {
             id: ultimoId +1,
             name: input,
             species: inputEspecie,
-            image: `https://www.cleverfiles.com/howto/wp-content/uploads/2018/03/minion.jpg`
+            image:inputImage.trim()
         };
         addItem(Item);
     }
@@ -28,6 +30,7 @@ export const Modals = ({ setOpenModal, addItem, ultimoId}) => {
         setNameSend(true);
         
         setOpenModal(false);
+        
         
         
     }
@@ -53,6 +56,15 @@ export const Modals = ({ setOpenModal, addItem, ultimoId}) => {
                             label={inputEspecie}
                             type="text"
                             onChange={(event) => setinputEspecie(event.target.value)}
+                        />
+
+                    <label className="modal--imput-text">Imagen</label>
+                        <input
+                            placeholder="Image"
+                            className="model-input"
+                            label={inputImage}
+                            type="text"
+                            onChange={(event) => setinputImage(event.target.value)}
                         />
                     
                 </div>

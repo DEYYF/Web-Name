@@ -19,7 +19,8 @@ export const ModalsEdits = ({setOpenModal, updateItem, item, setSelected}) => {
             image: item.image
         };
         updateItem(updatedItem);
-        setSelected(null)
+        setSelected(null);
+        
         
     }
     
