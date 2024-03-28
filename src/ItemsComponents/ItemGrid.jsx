@@ -20,7 +20,11 @@ export const ItemGrid = () => {
 
     const [copyitems, setCopyItem] = useState(['']);
 
+    const [RowSelected, setRowSelected] = useState(null)
+
     const navigate = useNavigate();
+
+    
 
 
 
@@ -98,12 +102,35 @@ export const ItemGrid = () => {
         return <button className="bt-eliminar" onClick={() =>deleteItem(item)}>Eliminar</button>
     }
 
+    const changeColor = (event) => {
+
+        if (RowSelected != null && RowSelected.originalEvent != null) {
+
+            RowSelected.originalEvent.target.style.background = "White"
+
+            console.log(event.originalEvent.target);
+        
+        }
+
+        setRowSelected(event)
+
+        if (event.originalEvent != null) {
+            event.originalEvent.target.style.background = '#ADD8E6';
+            console.log(event.originalEvent.target);
+        }
+
+    }
+
+    const changeColorDesSelect = (event) => {
+
+
+            event.originalEvent.target.style.background = 'White';
+            console.log(event.originalEvent.target);
+
+
+    }
+
     
-
-   
-
-
-
 
     return (
         <>
@@ -118,7 +145,8 @@ export const ItemGrid = () => {
                     placeholder="Search"
                     onChange={Buscador}/>
 
-                    <DataTable value={items} selectionMode="single"  selection= {selectedItem} onSelectionChange={(e) =>{setSelectedItem(e.value); setOpenModal2(false);}} tableStyle={{minWidth: '50rem'}} rowClassName={(rowData) => rowData === selectedItem ? 'selected-row' : ''}>
+                    <DataTable value={items} selectionMode="single"  selection= {selectedItem} onSelectionChange={(e) =>{setSelectedItem(e.value); setOpenModal2(false);  }}
+                     onRowClick={changeColor}>
                         
                         <Column field="name" header="Name"></Column>
                         <Column header="Image" body={imageBody}></Column>
