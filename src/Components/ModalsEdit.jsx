@@ -71,7 +71,7 @@ export const ModalsEdits = ({setOpenModal, updateItem, item, setSelected, rowSel
                     <div>
                     <div>
                         <button className="modal-footer-button modal-button-send" onClick={sendItem}>Send</button>
-                        <button className="modal-footer-button modal-button-cancel" onClick={() => {setOpenModal(false); rowSelected.originalEvent.target.style.background = 'White';}}>Cancel</button>
+                        <button className="modal-footer-button modal-button-cancel" onClick={() => {setOpenModal(false); rowSelected.originalEvent.target.style.background = 'White'; setSelected(null)}}>Cancel</button>
                     </div>
 
                     </div>
