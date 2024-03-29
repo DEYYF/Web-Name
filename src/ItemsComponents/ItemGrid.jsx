@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import "../../styles.css"
-import { Button, Input, Modal } from "antd";
+import { Button, Input, Modal, notification } from "antd";
 
 
 export const ItemGrid = () => {
@@ -135,6 +135,25 @@ export const ItemGrid = () => {
       
     }, []);
 
+   
+    const openNotificacionDelete = (itemdelete) =>{
+        notification.open({
+            message: 'Elemento Borrado',
+            description: `Has eliminiada ha ${itemdelete.name}, de la especie ${itemdelete.species}.`,
+
+        })
+    }
+
+    const openNotificacionRecuperar = (itemRecuperado) =>{
+        notification.open({
+            message: 'Elemento Recuperado',
+            description: `Has recuperado ha ${itemRecuperado.name}, de la especie ${itemRecuperado.species}.`,
+
+        })
+    }
+
+
+
 
 
 
@@ -144,12 +163,12 @@ export const ItemGrid = () => {
     }
 
     const buttonDeleteBody = (item) => {
-        return <button className="bt-eliminar" onClick={() =>deleteItem(item)}>Eliminar</button>
+        return <button className="bt-eliminar" onClick={() => {deleteItem(item); openNotificacionDelete(item);}}>Eliminar</button>
     }
 
 
     const buttonRecuperaBody = (item) => {
-        return <button className="bt-recuperar" onClick={() =>RecuperarItem(item)}>Recuperar</button>
+        return <button className="bt-recuperar" onClick={() =>{RecuperarItem(item); openNotificacionRecuperar(item)}}>Recuperar</button>
     }
 
     const headerRecuperado = () => {
