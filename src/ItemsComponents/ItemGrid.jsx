@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import "../../styles.css"
-import { Button, FloatButton, Input, Modal } from "antd";
+import { Button, Input, Modal } from "antd";
 
 
 export const ItemGrid = () => {
@@ -62,6 +62,10 @@ export const ItemGrid = () => {
             const newItem = await getItem();
             localStorage.setItem("data",JSON.stringify(newItem));
             setItem(JSON.parse(localStorage.getItem("data")));
+            setCopyItem(JSON.parse(localStorage.getItem("data")));
+        }else{
+            const newItem = await getItem();
+            setItem(newItem);
             setCopyItem(newItem);
         }
     }
