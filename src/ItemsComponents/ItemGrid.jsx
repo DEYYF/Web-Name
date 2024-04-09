@@ -157,7 +157,7 @@ export const ItemGrid = () => {
     const openNotificacionDelete = (itemdelete) =>{
         notification.open({
             message: 'Elemento Borrado',
-            description: `Has eliminiada ha ${itemdelete.name}, de la especie ${itemdelete.species}.`,
+            description: `Has eliminado ha ${itemdelete.name}, de la especie ${itemdelete.species}.`,
 
         })
     }
@@ -213,9 +213,9 @@ export const ItemGrid = () => {
 
 
     
-
     return (
         <>
+    
             {contexHolder}
             <div className="card-grid">
 
