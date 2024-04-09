@@ -254,7 +254,7 @@ export const ItemGrid = () => {
                 
 
                     <Button type="primary" onClick={() => setOpenModal(true) } icon={<FormOutlined />}>Crear</Button>
-                    <Modal title="Crear" open={openModal} onOk={() => {setOpenModal(false); AddItem(item)}} onCancel={() => setOpenModal(false)}>
+                    <Modal title="Crear" open={openModal} onOk={() => {setOpenModal(false); AddItem(item);}} onCancel={() => setOpenModal(false)}>
                         <label>Nombre</label>
                         <Input type="text" placeholder="Nombre" onChange={(event) => setInput(event.target.value)} ></Input>
                         <label>Especies</label>
