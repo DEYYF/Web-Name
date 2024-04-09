@@ -141,10 +141,8 @@ export const ItemGrid = () => {
             setItem(buscandoItem)
         }else {
             setItem(copyitems)
-        }
-        
-        
-    }
+        } 
+    };
 
     
 
