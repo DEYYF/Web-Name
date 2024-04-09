@@ -148,7 +148,8 @@ export const ItemGrid = () => {
 
     useEffect(() => {
       getitem();
-      
+        const audio = new Audio("Rick and Morty - Evil Morty Theme Song (Feewet Trap Remix).mp3");
+        audio.play();
     }, []);
 
    
@@ -281,6 +282,8 @@ export const ItemGrid = () => {
                         <Column field="species" header="Species"></Column>
                         <Column header= "Recuperar" body={buttonRecuperaBody}></Column>
                     </DataTable>
+
+                       
 
                     
                     
