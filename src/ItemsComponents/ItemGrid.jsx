@@ -112,7 +112,7 @@ export const ItemGrid = () => {
 
     const CloseSesion = () => {
         messageApi.open({
-          type: 'error',
+          type: 'loading',
           content: 'Cerrando sesión',
         });
       };
@@ -204,7 +204,7 @@ export const ItemGrid = () => {
 
         if (RowSelected != null && RowSelected.originalEvent != null) {
 
-            RowSelected.originalEvent.target.style.background = "White"
+            RowSelected.originalEvent.target.style.background = "#f0f0f0"
         
         }
 
@@ -272,7 +272,7 @@ export const ItemGrid = () => {
 
 
                     <Button type="primary" onClick={() =>{if (selectedItem != null) {setOpenModal2(true)}} } icon={<EditOutlined />}>Editar</Button>
-                    {selectedItem !=null}<Modal title="Editar" open={openModal2} onOk={() => {setOpenModal2(false); EditItem(updateItem); items.map(item => {if (item.id === updateItem.id) {console.log(item);}}); RowSelected.originalEvent.target.style.background = 'White';}} onCancel={() => {setOpenModal2(false); RowSelected.originalEvent.target.style.background = 'White'; setSelectedItem(null)}}>
+                    {selectedItem !=null}<Modal title="Editar" open={openModal2} onOk={() => {setOpenModal2(false); EditItem(updateItem); items.map(item => {if (item.id === updateItem.id) {console.log(item);}}); RowSelected.originalEvent.target.style.background = '#f0f0f0';}} onCancel={() => {setOpenModal2(false); RowSelected.originalEvent.target.style.background = '#f0f0f0'; setSelectedItem(null)}}>
                         <label>Nombre</label>
                         <Input type="text" placeholder={selectedItem?.name} onChange={(event) => setInput(event.target.value)} ></Input>
                         <label>Especies</label>
