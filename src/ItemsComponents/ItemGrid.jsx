@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { getItem } from "../helpers/getItem";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import "../../styles.css"
-import { Button, Input, Modal, notification } from "antd";
+import { UserOutlined, LogoutOutlined, DeleteOutlined, EditOutlined, FormOutlined, SearchOutlined } from '@ant-design/icons';
+import { Avatar, Button, FloatButton, Image, Input, Modal, Space, message, notification } from "antd";
 
 
 export const ItemGrid = () => {
@@ -12,6 +13,9 @@ export const ItemGrid = () => {
     const [openModal, setOpenModal] = useState(false);
 
     const [openModal2, setOpenModal2] = useState(false);
+
+    const [openModalinfo, setOpenModalinfo] = useState(false);
+
 
     const [selectedItem, setSelectedItem] = useState({
         id: 0,
@@ -34,6 +38,8 @@ export const ItemGrid = () => {
 
     const [inputImage, setinputImage] = useState("")
 
+    const [messageApi, contexHolder] = message.useMessage();
+
     const navigate = useNavigate();
 
     const item = {
@@ -48,9 +54,10 @@ export const ItemGrid = () => {
         name: input.trim() === '' ? selectedItem?.name : input,
         species: inputEspecie.trim() === '' ? selectedItem?.species : inputEspecie,
         image: selectedItem?.image
-    }
+    };
     
 
+    const user = useLocation().state?.data;
 
     
 
@@ -103,12 +110,23 @@ export const ItemGrid = () => {
         setItem(updatedItems);
     }
 
+    const CloseSesion = () => {
+        messageApi.open({
+          type: 'error',
+          content: 'Cerrando sesión',
+        });
+      };
 
 
     const goBack = (event) => {
         event.preventDefault(); 
+        CloseSesion();
 
-        navigate('/'); 
+        setTimeout(() => {
+            navigate('/'); 
+        }, 1000);
+
+        
     }
 
 
@@ -151,6 +169,7 @@ export const ItemGrid = () => {
 
         })
     }
+    
 
 
 
@@ -158,17 +177,23 @@ export const ItemGrid = () => {
 
 
     const imageBody = (item) => {
-       
-        return <img src={item.image} alt={item.image} className="w-6rem shadow-2 border-round"/>;
+               return (
+        <>
+            <Image.PreviewGroup>
+                <Image src={item.image} alt={item.image} className="w-6rem shadow-2 border-round"/>
+            </Image.PreviewGroup>
+            
+        </>)
+        return ;
     }
 
     const buttonDeleteBody = (item) => {
-        return <button className="bt-eliminar" onClick={() => {deleteItem(item); openNotificacionDelete(item);}}>Eliminar</button>
+        return <Button type="primary" className="bt-eliminar" onClick={() => {deleteItem(item); openNotificacionDelete(item);}} icon={<DeleteOutlined />}>Eliminar</Button>
     }
 
 
     const buttonRecuperaBody = (item) => {
-        return <button className="bt-recuperar" onClick={() =>{RecuperarItem(item); openNotificacionRecuperar(item)}}>Recuperar</button>
+        return <Button type="primary" className="bt-recuperar" onClick={() =>{RecuperarItem(item); openNotificacionRecuperar(item)}}>Recuperar</Button>
     }
 
     const headerRecuperado = () => {
@@ -198,12 +223,32 @@ export const ItemGrid = () => {
 
     return (
         <>
+            {contexHolder}
             <div className="card-grid">
 
-                <Button type="primary" className="GoBack" onClick={goBack}>Back</Button>
+                <div className="icon-perfil">
+                    <Space direction="vertical" size={16}>
+                        <Space wrap size={16}>
+                        <Avatar size="large" icon={<UserOutlined />} onClick={() => { setOpenModalinfo(true) }} />
+                        </Space>
+                    </Space>
+                </div>
+                <Modal title="Perfil" open={openModalinfo} onOk={() => setOpenModalinfo(false)} onCancel={() => setOpenModalinfo(false)} cancelButtonProps={{ style: { display: 'none' } }}>
+                    <div className="modal-content">
+                        <label className="user-tittle">Email</label>
+                        <h2 className="user-desc">{user.Email}</h2>
+                        <label className="pass-tittle">Password</label>
+                        <h2 className="pass-desc">{user.password}</h2>
+                        <Button type="primary" className="close-session-button" onClick={goBack} icon={<LogoutOutlined/>}>Cerrar sesión</Button>
+
+                    </div>
+                </Modal>
+
 
                 
-                <Input type="text" placeholder="Search" onChange={Buscador}></Input>
+
+                
+                <Input type="text" onChange={Buscador} prefix={<SearchOutlined />}></Input>
 
                     <DataTable value={items} selectionMode="single"  selection= {selectedItem} onSelectionChange={(e) =>{ setSelectedItem(e.value)}}
                      onRowClick={changeColor}>
@@ -215,7 +260,7 @@ export const ItemGrid = () => {
                     </DataTable>
                 
 
-                    <Button type="primary" onClick={() => setOpenModal(true)}>Crear</Button>
+                    <Button type="primary" onClick={() => setOpenModal(true) } icon={<FormOutlined />}>Crear</Button>
                     <Modal title="Crear" open={openModal} onOk={() => {setOpenModal(false); AddItem(item)}} onCancel={() => setOpenModal(false)}>
                         <label>Nombre</label>
                         <Input type="text" placeholder="Nombre" onChange={(event) => setInput(event.target.value)} ></Input>
@@ -226,13 +271,15 @@ export const ItemGrid = () => {
                     </Modal>
 
 
-                    <Button type="primary" onClick={() =>{if (selectedItem != null) {setOpenModal2(true)}} }>Editar</Button>
+                    <Button type="primary" onClick={() =>{if (selectedItem != null) {setOpenModal2(true)}} } icon={<EditOutlined />}>Editar</Button>
                     {selectedItem !=null}<Modal title="Editar" open={openModal2} onOk={() => {setOpenModal2(false); EditItem(updateItem); items.map(item => {if (item.id === updateItem.id) {console.log(item);}}); RowSelected.originalEvent.target.style.background = 'White';}} onCancel={() => {setOpenModal2(false); RowSelected.originalEvent.target.style.background = 'White'; setSelectedItem(null)}}>
                         <label>Nombre</label>
                         <Input type="text" placeholder={selectedItem?.name} onChange={(event) => setInput(event.target.value)} ></Input>
                         <label>Especies</label>
                         <Input type="text" placeholder={selectedItem?.species} onChange={(event) => setinputEspecie(event.target.value)} ></Input>
                     </Modal>
+
+                    <FloatButton.BackTop>+</FloatButton.BackTop> 
 
                     
 

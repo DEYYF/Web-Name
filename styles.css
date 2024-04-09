@@ -4,6 +4,7 @@
 
 body {
   padding: 60px;
+  background-color: #f0f0f0;
 }
 
 input {
@@ -158,3 +159,35 @@ h3 {
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.user-tittle,
+.pass-tittle {
+  margin-bottom: 5px;
+}
+
+.user-desc,
+.pass-desc {
+  margin-bottom: 20px;
+}
+
+.close-session-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: #ff4d4f;
+}
+
+.icon-perfil {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
