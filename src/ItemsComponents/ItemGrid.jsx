@@ -177,14 +177,7 @@ export const ItemGrid = () => {
 
 
     const imageBody = (item) => {
-               return (
-        <>
-            <Image.PreviewGroup>
-                <Image src={item.image} alt={item.image} className="w-6rem shadow-2 border-round"/>
-            </Image.PreviewGroup>
-            
-        </>)
-        return ;
+               return <Image src={item.image} alt={item.image} className="w-6rem shadow-2 border-round"/>;
     }
 
     const buttonDeleteBody = (item) => {
