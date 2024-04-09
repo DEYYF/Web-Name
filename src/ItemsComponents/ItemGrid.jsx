@@ -40,6 +40,8 @@ export const ItemGrid = () => {
 
     const [messageApi, contexHolder] = message.useMessage();
 
+    
+
     const navigate = useNavigate();
 
     const item = {
@@ -148,8 +150,6 @@ export const ItemGrid = () => {
 
     useEffect(() => {
       getitem();
-        const audio = new Audio("Rick and Morty - Evil Morty Theme Song (Feewet Trap Remix).mp3");
-        audio.play();
     }, []);
 
    
@@ -216,6 +216,7 @@ export const ItemGrid = () => {
         <>
     
             {contexHolder}
+
             <div className="card-grid">
 
                 <div className="icon-perfil">
