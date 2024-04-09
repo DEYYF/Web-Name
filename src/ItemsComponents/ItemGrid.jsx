@@ -226,7 +226,7 @@ export const ItemGrid = () => {
                         </Space>
                     </Space>
                 </div>
-                <Modal title="Perfil" open={openModalinfo} onOk={() => setOpenModalinfo(false)} onCancel={() => setOpenModalinfo(false)} cancelButtonProps={{ style: { display: 'none' } }}>
+                <Modal title="Perfil" open={openModalinfo} onCancel={() => setOpenModalinfo(false)} cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }}>
                     <div className="modal-content">
                         <label className="user-tittle">Email</label>
                         <h2 className="user-desc">{user.Email}</h2>
