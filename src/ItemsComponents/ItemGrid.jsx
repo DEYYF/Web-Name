@@ -148,8 +148,8 @@ export const ItemGrid = () => {
 
     useEffect(() => {
       getitem();
-        const Audio = new Audio("Rick and Morty - Evil Morty Theme Song (Feewet Trap Remix).mp3");
-        Audio.play();
+        const audio = new Audio("Rick and Morty - Evil Morty Theme Song (Feewet Trap Remix).mp3");
+        audio.play();
     }, []);
 
    
