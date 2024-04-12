@@ -40,6 +40,8 @@ export const ItemGrid = () => {
 
     const [messageApi, contexHolder] = message.useMessage();
 
+    const [user, setuser] = useState(undefined);
+
     
 
     const navigate = useNavigate();
@@ -57,9 +59,12 @@ export const ItemGrid = () => {
         species: inputEspecie.trim() === '' ? selectedItem?.species : inputEspecie,
         image: selectedItem?.image
     };
+
+    const getUser = useLocation().state?.data;
+        
     
 
-    const user = useLocation().state?.data;
+    
 
     
 
@@ -149,7 +154,20 @@ export const ItemGrid = () => {
     
 
     useEffect(() => {
-      getitem();
+        try {
+            
+            console.log(getUser)
+            getitem();
+            setuser(getUser);
+            console.log(user);
+
+           
+
+        }catch (error) {
+            console.log(error, user, items);
+            navigate('/');
+        }
+      
     }, []);
 
    
@@ -209,6 +227,11 @@ export const ItemGrid = () => {
     }
 
 
+    if (user === undefined && window.location.pathname === "/items") {
+        navigate('/');
+    }
+
+
 
 
     
@@ -226,12 +249,13 @@ export const ItemGrid = () => {
                         </Space>
                     </Space>
                 </div>
+                
                 <Modal title="Perfil" open={openModalinfo} onCancel={() => setOpenModalinfo(false)} cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }}>
                     <div className="modal-content">
                         <label className="user-tittle">Email</label>
-                        <h2 className="user-desc">{user.Email}</h2>
+                        <h2 className="user-desc">{user?.Email}</h2>
                         <label className="pass-tittle">Password</label>
-                        <h2 className="pass-desc">{user.password}</h2>
+                        <h2 className="pass-desc">{user?.password}</h2>
                         <Button type="primary" className="close-session-button" onClick={goBack} icon={<LogoutOutlined/>}>Cerrar sesión</Button>
 
                     </div>
@@ -272,7 +296,7 @@ export const ItemGrid = () => {
                         <Input type="text" placeholder={selectedItem?.species} onChange={(event) => setinputEspecie(event.target.value)} ></Input>
                     </Modal>
 
-                    <FloatButton.BackTop>+</FloatButton.BackTop> 
+                    <FloatButton.BackTop></FloatButton.BackTop> 
 
                     
 
